@@ -8,7 +8,7 @@
     "new:post": "hexo new post",
     "new:draft": "hexo new draft",
     "new:page": "hexo new page",
-    "publish": "hexo publish"
+    "draft:publish": "hexo publish"
   },
   "hexo": {
     "version": "3.4.4"
