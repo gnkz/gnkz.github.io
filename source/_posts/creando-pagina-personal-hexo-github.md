@@ -1,8 +1,10 @@
 ---
 title: Creando una sitio personal usando Hexo y Github
 s: creando-pagina-personal-hexo-github
+date: 2017-12-24 19:52:36
 tags:
 ---
+
 # Hexo
 
 [Hexo](https://hexo.io/) es un generador de sitios estáticos como [Jekyll](https://jekyllrb.com/) o [Hugo](https://gohugo.io/) pero desarrollado en torno a *Node.js*. Sus únicos requerimientos son *Node.js* y *git*.
@@ -19,7 +21,7 @@ Una vez ejecutado este comando [Hexo](https://hexo.io/) quedará instalado globa
 
 ## Generando un sitio
 
-Para general tu primer sitio usando [Hexo](https://hexo.io/) debes ejecutar:
+Para genera tu primer sitio usando [Hexo](https://hexo.io/) debes ejecutar:
 
     hexo init mi-primer-blog
 
@@ -31,7 +33,9 @@ Si utilizas [Visual Studio Code](https://code.visualstudio.com/) como yo, puedes
 
     code .
 
-También puedes previsualizar el sitio con el comando:
+## Iniciando un servidor de desarrollo
+
+Para iniciar un servidor de desarrollo debes ejecutar el siguiente comando:
 
     hexo server --watch
 
@@ -79,8 +83,51 @@ Hola a todos. Este es mi primer post :).
 
 Todo lo que está entre `---` se denomina `front-matter` y sirve para configurar el post. Puedes aprender más sobre `front-matter` [acá](https://hexo.io/docs/front-matter.html).
 
-## Hosteando el sitio en Github
+# Github Pages
 
-Para hostear el sitio en Github debes crar un repositorio con un nombre especial. Si tu `username` en Github es `octocat`, el nombre de tu repositorio debería ser `octocat.github.io`.
+## Creando el repositorio
 
-Una vez que el repositorio fue creado es necesario agregar la configuración de 
+Para hostear el sitio en Github debes crar un repositorio con un nombre especial: `{username}.github.io`. Por ejemplo, si tu `username` en Github es `octocat`, el nombre de tu repositorio debería ser `octocat.github.io`.
+
+## Configurando el deployment
+
+Una vez que el repositorio fue creado es necesario agregar la configuración de deployment a la configuración de [Hexo](https://hexo.io/) en el archivo `_config.yml`.
+
+``` yaml
+deploy:
+  type: git
+  repo: git@github.com:{username}/{username}.github.io.git
+  branch: master
+```
+
+Debido a que se esta creando un sitio personal es necesario que `branch` sea `master` y no `gh-pages`.
+
+Además de `git`, [Hexo](https://hexo.io) soporta otros tipos de deployers como `heroku`, `rsync`, `openshift`, entre otros. Puedes aprender sobre los tipos de deployers [acá](https://hexo.io/docs/deployment.html).
+
+También es necesario modificar el campo `url` en el archivo `_config.yml`:
+
+``` yaml
+url: https://{username}.github.io
+```
+
+## Instalando el deployer
+
+Para instalar el deployer para `git` de [Hexo](https://hexo.io) es necesario ejecutar el siguiente comando:
+
+    npm i --save-dev hexo-deployer-git
+
+## Realizando el deployment
+
+Primero es necesario generar los archivos que se van a subir al repositorio en Github. Para esto es necesario ejecutar el comando:
+
+    hexo generate
+
+Luego para subir el sitio personal a Github basta con ejecutar el siguiente comando:
+
+    hexo deploy
+
+También puedes combinar los dos comandos anteriores en un solo comando:
+
+    hexo generate --deploy
+
+Si todo salió bien puedes visitar https://{username}.github.io para ver tu sitio personal.
