@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Gnkz&#39;s Notes</title>
+    <link>https://gnkz.github.io/</link>
+    <description>Recent content on Gnkz&#39;s Notes</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 24 Dec 2017 19:52:36 -0600</lastBuildDate>
+    
+	<atom:link href="https://gnkz.github.io/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Creando un sitio personal usando Hexo y Github</title>
+      <link>https://gnkz.github.io/blog/creando-un-sitio-personal-usando-hexo-y-github/</link>
+      <pubDate>Sun, 24 Dec 2017 19:52:36 -0600</pubDate>
+      
+      <guid>https://gnkz.github.io/blog/creando-un-sitio-personal-usando-hexo-y-github/</guid>
+      <description>Hexo Hexo es un generador de sitios estáticos como Jekyll o Hugo pero desarrollado en torno a Node.js. Sus únicos requerimientos son Node.js y git.
+Instalación Para instalar Hexo basta con ejecutar:
+npm i -g hexo  Una vez ejecutado este comando Hexo quedará instalado globalmente. Puedes verificarlo ejecutando:
+hexo --version  Generando un sitio Para genera tu primer sitio usando Hexo debes ejecutar:
+hexo init mi-primer-blog  Ahora puedes navegar hasta el directorio mi-primer-blog donde se encuentra todo lo necesario para crear tus primeros posts:</description>
+    </item>
+    
+    <item>
+      <title>colophon</title>
+      <link>https://gnkz.github.io/about/colophon/</link>
+      <pubDate>Sat, 22 Aug 2015 06:28:26 -0700</pubDate>
+      
+      <guid>https://gnkz.github.io/about/colophon/</guid>
+      <description>This website is a personal homepage.
+The site is built with Hugo—a static site generator made with Go. The website source code is available on GitHub. It uses the cocoa theme. The posts are written in Markdown.
+The primary font face is Open Sans and the monospace font face is Ubuntu Mono. The social icons are from the Ionicons font set. CSS classes for code syntax highlighting are inserted during compile-time by Hugo using Pygments.</description>
+    </item>
+    
+  </channel>
+</rss>

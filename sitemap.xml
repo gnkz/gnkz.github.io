@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+  <url>
+    <loc>https://gnkz.github.io/blog/creando-un-sitio-personal-usando-hexo-y-github/</loc>
+    <lastmod>2017-12-24T19:52:36-06:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://gnkz.github.io/about/</loc>
+    <lastmod>2015-08-22T06:42:21-07:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://gnkz.github.io/blog/</loc>
+    <lastmod>2015-08-22T06:42:21-07:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://gnkz.github.io/about/colophon/</loc>
+    <lastmod>2015-08-22T06:28:26-07:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://gnkz.github.io/categories/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://gnkz.github.io/</loc>
+    <lastmod>2017-12-24T19:52:36-06:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://gnkz.github.io/tags/</loc>
+    <priority>0</priority>
+  </url>
+  
+</urlset>

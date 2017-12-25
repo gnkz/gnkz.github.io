@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Blog on Gnkz&#39;s Notes</title>
+    <link>https://gnkz.github.io/blog/</link>
+    <description>Recent content in Blog on Gnkz&#39;s Notes</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 22 Aug 2015 06:42:21 -0700</lastBuildDate>
+    
+	<atom:link href="https://gnkz.github.io/blog/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Creando un sitio personal usando Hexo y Github</title>
+      <link>https://gnkz.github.io/blog/creando-un-sitio-personal-usando-hexo-y-github/</link>
+      <pubDate>Sun, 24 Dec 2017 19:52:36 -0600</pubDate>
+      
+      <guid>https://gnkz.github.io/blog/creando-un-sitio-personal-usando-hexo-y-github/</guid>
+      <description>Hexo Hexo es un generador de sitios estáticos como Jekyll o Hugo pero desarrollado en torno a Node.js. Sus únicos requerimientos son Node.js y git.
+Instalación Para instalar Hexo basta con ejecutar:
+npm i -g hexo  Una vez ejecutado este comando Hexo quedará instalado globalmente. Puedes verificarlo ejecutando:
+hexo --version  Generando un sitio Para genera tu primer sitio usando Hexo debes ejecutar:
+hexo init mi-primer-blog  Ahora puedes navegar hasta el directorio mi-primer-blog donde se encuentra todo lo necesario para crear tus primeros posts:</description>
+    </item>
+    
+  </channel>
+</rss>
