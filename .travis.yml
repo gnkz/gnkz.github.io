@@ -1,6 +1,6 @@
 language: go
 go:
-  - 1.7.x
+  - 1.9.x
 before_install:
   - go get github.com/kardianos/govendor
   - govendor get github.com/gohugoio/hugo
