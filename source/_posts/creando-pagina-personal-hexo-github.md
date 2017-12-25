@@ -1,8 +1,8 @@
 ---
-title: Creando una sitio personal usando Hexo y Github
+title: Creando un sitio personal usando Hexo y Github
 s: creando-pagina-personal-hexo-github
 date: 2017-12-24 19:52:36
-tags:
+tags: [hexo, github, github-pages, git, nodejs, static-site-generator]
 ---
 
 # Hexo
