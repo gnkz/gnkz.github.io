@@ -1,0 +1,18 @@
+version: "3"
+
+services:
+  server:
+    image: gnkz/hugo-alpine:latest
+    volumes:
+      - "./src:/app"
+    ports:
+      - "1313:1313"
+    environment:
+      - LOCAL_USER_ID=1000
+    command: server --bind=0.0.0.0 --baseUrl=http://localhost
+  cli:
+    image: gnkz/hugo-alpine:latest
+    volumes:
+      - "./src:/app"
+    environment:
+      - LOCAL_USER_ID=1000
