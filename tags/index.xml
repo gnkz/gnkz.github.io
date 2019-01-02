@@ -6,9 +6,28 @@
     <description>Recent content in Tags on Gnkz&#39;s Notes</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
+    <lastBuildDate>Wed, 02 Jan 2019 08:14:44 -0300</lastBuildDate>
     
 	<atom:link href="https://gnkz.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Bip39</title>
+      <link>https://gnkz.github.io/tags/bip39/</link>
+      <pubDate>Wed, 02 Jan 2019 08:14:44 -0300</pubDate>
+      
+      <guid>https://gnkz.github.io/tags/bip39/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Mnemonic</title>
+      <link>https://gnkz.github.io/tags/mnemonic/</link>
+      <pubDate>Wed, 02 Jan 2019 08:14:44 -0300</pubDate>
+      
+      <guid>https://gnkz.github.io/tags/mnemonic/</guid>
+      <description></description>
+    </item>
     
   </channel>
 </rss>

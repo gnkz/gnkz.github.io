@@ -3,23 +3,20 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://gnkz.github.io/blog/creando-un-sitio-personal-usando-hexo-y-github/</loc>
-    <lastmod>2017-12-24T19:52:36-06:00</lastmod>
+    <loc>https://gnkz.github.io/blog/bip39-mnemonics/</loc>
+    <lastmod>2019-01-02T08:14:44-03:00</lastmod>
   </url>
   
   <url>
-    <loc>https://gnkz.github.io/about/</loc>
-    <lastmod>2015-08-22T06:42:21-07:00</lastmod>
+    <loc>https://gnkz.github.io/tags/bip39/</loc>
+    <lastmod>2019-01-02T08:14:44-03:00</lastmod>
+    <priority>0</priority>
   </url>
   
   <url>
     <loc>https://gnkz.github.io/blog/</loc>
-    <lastmod>2015-08-22T06:42:21-07:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://gnkz.github.io/about/colophon/</loc>
-    <lastmod>2015-08-22T06:28:26-07:00</lastmod>
+    <lastmod>2019-01-02T08:14:44-03:00</lastmod>
+    <priority>0</priority>
   </url>
   
   <url>
@@ -28,13 +25,26 @@
   </url>
   
   <url>
+    <loc>https://gnkz.github.io/categories/cryptography/</loc>
+    <lastmod>2019-01-02T08:14:44-03:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://gnkz.github.io/</loc>
-    <lastmod>2017-12-24T19:52:36-06:00</lastmod>
+    <lastmod>2019-01-02T08:14:44-03:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://gnkz.github.io/tags/mnemonic/</loc>
+    <lastmod>2019-01-02T08:14:44-03:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://gnkz.github.io/tags/</loc>
+    <lastmod>2019-01-02T08:14:44-03:00</lastmod>
     <priority>0</priority>
   </url>
   

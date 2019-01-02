@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Gnkz&#39;s Notes</title>
-    <link>https://gnkz.github.io/</link>
-    <description>Recent content on Gnkz&#39;s Notes</description>
+    <title>Cryptography on Gnkz&#39;s Notes</title>
+    <link>https://gnkz.github.io/categories/cryptography/</link>
+    <description>Recent content in Cryptography on Gnkz&#39;s Notes</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Wed, 02 Jan 2019 08:14:44 -0300</lastBuildDate>
     
-	<atom:link href="https://gnkz.github.io/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://gnkz.github.io/categories/cryptography/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>

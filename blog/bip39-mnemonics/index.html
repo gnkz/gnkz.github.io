@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="chrome=1">
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="referrer" content="no-referrer">
+<meta name="author" content="Gonzalo Sánchez">
+<meta name="description" content="So you just created a new wallet using metamask, ledger-live or other similar software and at some point you got asked to securely store a 12 word sentence like the one below (Don&rsquo;t worry, I won&rsquo;t use that mnemonic 😉).
+In this example the mnemonic is elite desk hockey kick music menu north behind express protect coach hamster but have you ever wondered how these sentences are generated?
+What is a mnemonic?">
+
+<meta property="og:title" content="Bip39: How mnemonics are generated" />
+<meta property="og:description" content="So you just created a new wallet using metamask, ledger-live or other similar software and at some point you got asked to securely store a 12 word sentence like the one below (Don&rsquo;t worry, I won&rsquo;t use that mnemonic 😉).
+In this example the mnemonic is elite desk hockey kick music menu north behind express protect coach hamster but have you ever wondered how these sentences are generated?
+What is a mnemonic?" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://gnkz.github.io/blog/bip39-mnemonics/" /><meta property="article:published_time" content="2019-01-02T08:14:44-03:00"/>
+<meta property="article:modified_time" content="2019-01-02T08:14:44-03:00"/>
+
+
+<title>
+
+
+     Bip39: How mnemonics are generated 
+
+</title>
+<link rel="canonical" href="https://gnkz.github.io/blog/bip39-mnemonics/">
+
+
+
+
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/styles/default.min.css">
+
+
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Ubuntu+Mono:400,400i,700,700i|Raleway:500">
+
+
+
+    
+    <link rel="stylesheet" href="https://gnkz.github.io/css/reset.css?t=2019-01-02%2016%3a33%3a50.092914504%20-0300%20-03%20m%3d%2b0.154222660">
+    <link rel="stylesheet" href="https://gnkz.github.io/css/pygments.css?t=2019-01-02%2016%3a33%3a50.092914504%20-0300%20-03%20m%3d%2b0.154222660">
+    <link rel="stylesheet" href="https://gnkz.github.io/css/main.css?t=2019-01-02%2016%3a33%3a50.092914504%20-0300%20-03%20m%3d%2b0.154222660">
+    
+
+
+
+
+<link rel="shortcut icon"
+
+    href="https://gnkz.github.io/img/leaf.ico"
+
+>
+
+
+
+
+
+
+
+
+</head>
+
+
+<body lang="en">
+
+<section class="header">
+    <div class="container">
+        <div class="content">
+            
+                
+                
+                
+                
+                
+                    
+                
+                
+                <a href="https://gnkz.github.io/"><img class="avatar" src="https://gnkz.github.io/img/avatar.png" srcset="https://gnkz.github.io/img/avatar.png 1x"></a>
+            
+            <a href="https://gnkz.github.io/"><div class="name">Gonzalo Sánchez</div></a>
+            
+            <nav>
+                <ul>
+                    
+                        <li class="nav-"><a href="https://gnkz.github.io/blog/"><span>Blog</span></a></li>
+                    
+                </ul>
+            </nav>
+        </div>
+    </div>
+</section>
+
+<section class="icons">
+    <div class="container">
+        <div class="content">
+        
+            <a href="//github.com/gnkz" target="_blank" rel="noopener"><img class="icon" src="https://gnkz.github.io/img/github.svg" alt="github" /></a>
+        
+
+        
+
+        
+
+	
+
+        
+
+        
+
+        
+            <a href="//linkedin.com/in/gonzalo-sanchez-vargas-8572b066" target="_blank" rel="noopener"><img class="icon" src="https://gnkz.github.io/img/linkedin.svg" alt="linkedin" /></a>
+        
+
+        
+
+        
+
+        
+
+        
+
+        
+
+        
+            <a href="mailto:gnkz.dev@gmail.com"><img class="icon" src="https://gnkz.github.io/img/email.svg" alt="email" /></a>
+        
+
+        
+
+        
+        </div>
+    </div>
+</section>
+
+
+<section class="main post non-narrow zero-top-spacing">
+    <div class="container">
+        <div class="content">
+            <div class="front-matter">
+                <div class="title-container">
+                    <div class="page-heading">
+
+    Bip39: How mnemonics are generated
+
+</div>
+
+                    <div class="initials"><a href="https://gnkz.github.io/"></a></div>
+                </div>
+                <div class="meta">
+                    
+                    <div class="date" title='Wed Jan 2 2019 08:14:44 -03'>Jan 2, 2019</div>
+                    
+                    
+		    <div class="reading-time"><div class="middot"></div>5 minutes read</div>
+                    
+                </div>
+            </div>
+            <div class="markdown">
+                
+
+<p>So you just created a new wallet using <a href="https://metamask.io/" target="_blank">metamask</a>, <a href="https://www.ledger.com/pages/ledger-live" target="_blank">ledger-live</a> or other similar software and at some point you got asked to securely store a 12 word sentence like the one below (Don&rsquo;t worry, I won&rsquo;t use that mnemonic 😉).</p>
+
+<p><img src="./metamask-mnemonic.png" alt="Metamask mnemonic example" /></p>
+
+<p>In this example the mnemonic is <code>elite desk hockey kick music menu north behind express protect coach hamster</code> but have you ever wondered how these sentences are generated?</p>
+
+<h2 id="what-is-a-mnemonic">What is a mnemonic?</h2>
+
+<p>First of all a mnemonic is a group of words chosen randomly from a list of <code>2048</code> unique words. The number of words in a mnemonic can be <code>12</code>, <code>15</code>, <code>18</code>, <code>21</code> or <code>24</code> but most of the times <code>12</code> words are used. There are lists of words for different languages, for example <a href="https://github.com/bitcoin/bips/blob/master/bip-0039/english.txt" target="_blank">english</a> and <a href="https://github.com/bitcoin/bips/blob/master/bip-0039/spanish.txt" target="_blank">spanish</a>. A list of different lists of words can be found <a href="https://github.com/bitcoin/bips/blob/master/bip-0039/bip-0039-wordlists.md" target="_blank">here</a>.</p>
+
+<h2 id="how-are-the-words-chosen">How are the words chosen?</h2>
+
+<p>To generate the mnemonic we need to get <code>entropy</code> from a good source of randomness. This <code>entropy</code> must have <code>128</code>, <code>160</code>, <code>192</code>, <code>224</code> or <code>256</code> bits. Then we need to calculate the <code>sha256</code> hash of this <code>entropy</code> and store the first <code>N</code> bits as a <code>checksum</code>. The length <code>N</code> of bits of the checksum will depend on the length of the <code>entropy</code> as we can see in the table below.</p>
+
+<table>
+<thead>
+<tr>
+<th align="right">Entropy bits</th>
+<th align="right">N Checksum bits</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="right">128</td>
+<td align="right">4</td>
+</tr>
+
+<tr>
+<td align="right">160</td>
+<td align="right">5</td>
+</tr>
+
+<tr>
+<td align="right">192</td>
+<td align="right">6</td>
+</tr>
+
+<tr>
+<td align="right">224</td>
+<td align="right">7</td>
+</tr>
+
+<tr>
+<td align="right">256</td>
+<td align="right">8</td>
+</tr>
+</tbody>
+</table>
+
+<p>Now that we have the <code>checksum</code> bits we can concatenate them to the <code>entropy</code> to generate an <code>entropy'</code>. Notice that the length of <code>entropy'</code> can be divided by <code>11</code>. This is not random at all. If for example you have an <code>entropy</code> of <code>128</code> bits you can generate an <code>entropy'</code> of <code>132</code> bits and if you divide <code>132</code> by <code>11</code> you will get <code>12</code>. This means that you have <code>12</code> groups of <code>11</code> bits on <code>entropy'</code>. Each one of these <code>11</code> bits group will work as an index to search words in the word list generating a <code>12</code> word mnemonic in this case. The number of words in the mnemonic will depend on the length of the <code>entropy'</code> as we can see below.</p>
+
+<table>
+<thead>
+<tr>
+<th align="right">Entropy bits</th>
+<th align="right">Entropy&rsquo; bits</th>
+<th align="right">Words</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="right">128</td>
+<td align="right">132</td>
+<td align="right">12</td>
+</tr>
+
+<tr>
+<td align="right">160</td>
+<td align="right">165</td>
+<td align="right">15</td>
+</tr>
+
+<tr>
+<td align="right">192</td>
+<td align="right">198</td>
+<td align="right">18</td>
+</tr>
+
+<tr>
+<td align="right">224</td>
+<td align="right">231</td>
+<td align="right">21</td>
+</tr>
+
+<tr>
+<td align="right">256</td>
+<td align="right">264</td>
+<td align="right">24</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="example">Example</h2>
+
+<p>Let&rsquo;s do an example step by step.</p>
+
+<p>First of all we are going to generate a random <code>128</code> bits number</p>
+
+<pre><code>0001 0010 1111 0100 0110 0001 0100 0111
+0100 1110 0101 0100 0100 1110 1000 0110
+1110 0111 0010 0001 0001 1110 1000 0110
+0110 0111 1011 0010 0101 0110 1001 0010
+</code></pre>
+
+<p>Then we are going to generate the <code>sha256</code> hash of the <code>entropy</code></p>
+
+<pre><code>0110 0000 0100 0010 1000 1110 1000 1011
+1110 1110 0101 1000 0101 1101 1001 1110
+0000 0000 0000 1010 0100 0111 0001 0101
+1000 0000 0001 0111 1100 1111 1000 0011
+1010 0011 0001 0001 1100 1010 0111 0011
+1111 0001 0101 1001 1011 1000 0111 0101
+0000 1111 0001 1110 1111 1110 0010 0101
+0010 1000 0111 1111 0101 0000 0010 0101
+</code></pre>
+
+<p>Then we can get the <code>checksum</code> (first <code>4</code> bits)</p>
+
+<pre><code>0110
+</code></pre>
+
+<p>And generate <code>entropy'</code> by concatenating the <code>checksum</code> to the <code>entropy</code> and create groups of <code>11</code> bits</p>
+
+<pre><code>00010010111
+10100011000
+01010001110
+10011100101
+01000100111
+01000011011
+10011100100
+00100011110
+10000110011
+00111101100
+10010101101
+00100100110
+</code></pre>
+
+<p>Each one of these groups of <code>11</code> bits can be transformed to decimals</p>
+
+<pre><code>151
+1304
+654
+1253
+551
+539
+1252
+286
+1075
+492
+1197
+294
+</code></pre>
+
+<p>And then search for each word in the word list using each number as an <code>index</code>. If we use the english word list</p>
+
+<pre><code>base
+perfect
+fade
+original
+eager
+drop
+orient
+cat
+major
+diesel
+noble
+cave
+</code></pre>
+
+<p>So in our example the mnemonic is <code>base perfect fade original eager drop orient cat major diesel noble cave</code>.</p>
+
+<h2 id="the-checksum-at-work">The checksum at work</h2>
+
+<p>Lets see how the <code>checksum</code> can help us to detect invalid mnemonics. Imagine we want to recover our <a href="https://metamask.io/" target="_blank">metamask</a> wallet and we mistakenly write the mnemonic <code>abandon perfect fade original eager drop orient cat major diesel noble cave</code>. Notice that we have changed the word <code>base</code> for <code>abandon</code>. Now we can do the inverse process.</p>
+
+<p>First we get the indexed of each word</p>
+
+<pre><code>0
+1304
+654
+1253
+551
+539
+1252
+286
+1075
+492
+1197
+294
+</code></pre>
+
+<p>Then we get the <code>11</code> bit representation of each index</p>
+
+<pre><code>00000000000
+10100011000
+01010001110
+10011100101
+01000100111
+01000011011
+10011100100
+00100011110
+10000110011
+00111101100
+10010101101
+00100100110
+</code></pre>
+
+<p>We know that the last <code>4</code> bits of this is the <code>checksum</code></p>
+
+<pre><code>0110
+</code></pre>
+
+<p>We remove this to get the <code>entropy</code></p>
+
+<pre><code>0000 0000 0001 0100 0110 0001 0100 0111
+0100 1110 0101 0100 0100 1110 1000 0110
+1110 0111 0010 0001 0001 1110 1000 0110
+0110 0111 1011 0010 0101 0110 1001 0010
+</code></pre>
+
+<p>Then we calculate the <code>sha256</code> hash of this <code>entropy</code></p>
+
+<pre><code>0101 1111 0011 0000 1111 1101 0111 1011
+0100 1001 1000 0001 0101 0001 0011 0000
+1010 0011 0100 1110 0111 1001 1100 1000
+0001 0010 1101 0100 0010 0110 0000 0011
+1011 0110 1001 1011 0100 1111 1111 0011
+0001 0110 0000 0101 0011 0000 0111 1000
+0111 0000 1010 1101 1000 0101 1100 0111
+0001 1010 1010 0000 0011 0001 0000 0000
+</code></pre>
+
+<p>And we get the actual <code>checksum</code> for this <code>entropy</code></p>
+
+<pre><code>0101
+</code></pre>
+
+<p>We can see that the <code>checksum</code> included on the mnemonic is different from the <code>checksum</code> generated from the <code>entropy</code></p>
+
+<pre><code>0110 != 0101
+</code></pre>
+
+<p>So we can conclude that the mnemonic has an error.</p>
+
+<h2 id="final-words">Final words</h2>
+
+<p>This write up was created because I wanted to understand how mnemonic sentences are generated so hopefully it will help you to understand it too 😄.</p>
+
+                <br>
+                
+                  <div class="tags">
+                    <strong>Tags:</strong>
+                  
+                    <a href="https://gnkz.github.io/tags/bip39">bip39</a>
+                  
+                    <a href="https://gnkz.github.io/tags/mnemonic">mnemonic</a>
+                  
+                  </div>
+                  <br />
+                
+                <p class="back-to-posts"><a href="https://gnkz.github.io/blog">Back to posts</a></p>
+            </div>
+            <br>
+            <div class="disqus">
+                
+            </div>
+            
+        </div>
+    </div>
+</section>
+
+
+
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/highlight.min.js"></script>
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/languages/go.min.js"></script>
+  
+
+  <script type="text/javascript">
+    hljs.initHighlightingOnLoad();
+  </script>
+
+
+
+
+
+</body>
+</html>
+
