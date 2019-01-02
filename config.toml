@@ -1,0 +1,51 @@
+baseURL = "https://gnkz.github.io/"
+languageCode = "en-us"
+title = "Gnkz's Notes"
+theme = "cocoa"
+author = "Gonzalo Sánchez"
+
+paginate = 20
+canonifyurls = true
+
+pygmentsuseclasses = true
+
+enableEmoji = true
+
+[permalinks]
+blog  = "blog/:slug/"
+
+[[menu.main]]
+name                   = "Blog"
+weight                 = -120
+url                    = "/blog/"
+
+[blackfriday]
+    plainIDAnchors = true
+    hrefTargetBlank = true
+
+[params]
+    include_rss            = true                          # include RSS <link> tag in <head> and show RSS icon
+    latestpostscount       = 5                             # how many posts to display on the home page
+    author                 = "Gonzalo Sánchez"
+    cachebuster            = true                          # add the current unix timestamp in query string for cache busting css assets
+    dateform               = "Jan 2, 2006"
+    dateformfull           = "Mon Jan 2 2006 15:04:05 MST"
+    description            = "This is my personal blog"
+    email                  = "gnkz.dev@gmail.com"
+    faviconfile            = "img/leaf.ico"
+    github                 = "//github.com/gnkz"
+    lang                   = "en"
+    linkedin               = "//linkedin.com/in/gonzalo-sanchez-vargas-8572b066"
+    noshowreadtime         = false                         # if true, don't show "<x> minutes read" in posts
+    selfintro              = ""                            # appears in the site header when set to a non-empty string
+
+    highlightjs            = true
+    highlightjslanguages = ["go"]                        # additional languages not included in the "common" set
+    # highlightjsStyle     = "darcula"
+
+    piwik                  = false                         # If true, Piwik integration is enabled
+
+    gitalk                 = false
+
+    avatar                 = "img/avatar.png" # path to image in static dir e.g img/avatar.png (do not use in the same time as gravatar)
+
